@@ -1,0 +1,41 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #225799;
+}
+.sideBar {
+  background: linear-gradient(to bottom, #096faa, #0a3754);
+}
+
+mat-icon {
+  color: white;
+}
+
+mat-icon:hover {
+  color: #3b8df2;
+}
+
+#logout-icon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 10%;
+}
+
+mat-list-item {
+  margin-top: 15%;
+}
+
+.mat-selection-list {
+  transition: none;
+}
+
+.center-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

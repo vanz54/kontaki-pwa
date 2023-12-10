@@ -1,0 +1,7 @@
+<form class="formLogin">
+  <h1>Login</h1>
+  <input matInput placeholder="Email" class="input" type="email" name="email" #userEmail required>
+  <input matInput placeholder="*********" class="input" type="password" name="password" #userPassword required>
+
+  <button type="button" (click)="authService.Login(userEmail.value, userPassword.value)">Login</button>
+</form>

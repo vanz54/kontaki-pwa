@@ -1,0 +1,150 @@
+td {
+  font-size: 22px;
+}
+
+.table td.amount,
+.table td.reason,
+.table td.date {
+  font-weight: bold;
+}
+
+#deleteRowBtn {
+  color: #0f4e79;
+  background-color: transparent;
+  align-items: center;
+  border: none;
+}
+
+#editRowBtn {
+  color: #0f4e79;
+  background-color: transparent;
+  border: none;
+}
+
+#undoEditRowBtn {
+  color: #0f4e79;
+  background-color: transparent;
+
+  border: none;
+}
+
+#deleteRowBtn:hover {
+  color: #9f1d1d;
+}
+
+#editRowBtn:hover {
+  color: #167636 !important;
+}
+
+#undoEditRowBtn:hover {
+  color: #cf8a21 !important;
+}
+
+.text-negative {
+  color: #da2121 !important;
+}
+
+.text-positive {
+  color: #1ea44a !important;
+}
+
+#addButton {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  background-color: #0f4e79;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: rotateX(-10deg);
+  transition: all 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#addButton:hover {
+  background-color: #0f4e79;
+  font-size: 17px;
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#addNewRowForm > input {
+  background-color: #0f4e79;
+  color: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#addNewRowForm > input::placeholder {
+  color: #fff;
+}
+.dollar-div {
+  background-color: #fff;
+  color: #225799;
+  padding: 6px;
+  border-radius: 10px;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+}
+
+#addNewRowForm > input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.demo {
+  font-family: "Noto Sans", sans-serif;
+}
+.panel {
+  background: #0f4e79;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.05), 0 0 0 10px rgba(0, 0, 0, 0.05);
+}
+.panel .panel-body {
+  padding: 0;
+}
+.panel .panel-body .table thead tr th {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px;
+  border: none;
+}
+.panel .panel-body .table tbody tr td {
+  color: #0f4e79;
+  font-size: 15px;
+  padding: 10px 12px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: #0f4e79;
+}
+.panel .panel-body .table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media only screen and (max-width: 767px) {
+  .panel .panel-heading .title {
+    text-align: center;
+    margin: 0 0 10px;
+  }
+  .panel .panel-heading .btn_group {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #addNewRowForm {
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+  }
+}

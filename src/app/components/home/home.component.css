@@ -1,0 +1,138 @@
+mat-toolbar {
+  background: #004a9f;
+  color: white;
+}
+
+mat-sidenav {
+  height: 80%;
+  margin: 10px;
+  width: 200px;
+  border-right: none;
+  background: linear-gradient(to bottom, #096faa, #0a3754);
+  color: white;
+  text-shadow: #0a3756 2px 2px 4px;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: 80%;
+  border-radius: 10px;
+  margin: 10px;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding: 16px;
+  overflow: auto;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-shadow: #0a3756 2px 2px 4px;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+}
+
+.menu-button:hover {
+  transform: scale(1.02);
+}
+
+.menu-button > mat-icon {
+  margin-right: 10px;
+}
+
+#toggle-button {
+  color: #0f4e79;
+  height: 40px;
+  width: 40px;
+  padding-left: 30px;
+  padding-top: 20px;
+  font-size: x-large;
+  background-color: transparent;
+  border: none;
+}
+
+#toggle-button > #open-menu {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #0f4e79;
+  color: white;
+  text-align: center;
+  flex: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#homeRight {
+  float: left;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 70%;
+}
+
+h1 {
+  text-shadow: #0a3756 2px 2px 4px;
+  font-size: 20px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.error-message {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 5px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.error-message > mat-icon {
+  margin-right: 10px;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+/*
+
+#homeKontaki {
+  height: 100%;
+  width: 100%;
+}
+
+ */

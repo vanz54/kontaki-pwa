@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kontaki-tv54": {
+      "hosting": {
+        "kontaki": [
+          "kontaki-tv54"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kontaki-tv54"
+  }
+}

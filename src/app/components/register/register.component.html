@@ -1,0 +1,14 @@
+<form class="formRegister">
+  <h1>Register</h1>
+  <input matInput placeholder="Name" class="input" type="text" formControlName="name" name="name" #userName required>
+  <input matInput placeholder="Email" class="input" type="email" formControlName="email" name="email" #userEmail
+    required>
+  <input matInput placeholder="*********" class="input" type="password" formControlName="password" name="password"
+    #userPwd required>
+  <input matInput placeholder="$$$$$$$" class="input" type="number" name="startingCash" formControlName="startingCash"
+    #userStartingCash required>
+
+  <button type="button"
+    (click)="authService.Register(userName.value, userEmail.value, userPwd.value, userStartingCash.value)">
+    Register </button>
+</form>

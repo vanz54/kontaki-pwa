@@ -1,0 +1,107 @@
+<div class="row" *ngIf="authService.userData as user">
+  <div class="col-md-12">
+    <div class="media">
+      <div class="media-body p-5">
+
+
+        <div class="container">
+          <div>
+            <div class="col-md-offset-1 col-md-50">
+              <div class="panel ">
+                <div class="panel-body table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Amount</th>
+                        <th>Reason</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <tr *ngFor="let transaction of user.banking ; index as i">
+                        <td>
+                          {{i+1}}
+                        </td>
+                        <td
+                          [ngClass]="{'text-negative': transaction.amount < 0, 'text-positive': transaction.amount >= 0, 'amount': true}">
+                          <div class="input-group" *ngIf="transaction.isEdit">
+                            <input type="number" class="form-control" placeholder="{{user.banking[i].amount}}"
+                              #amountEdited>
+                          </div>
+                          <div *ngIf="!transaction.isEdit">
+                            {{ transaction.amount }} €
+                          </div>
+                        </td>
+                        <td [ngClass]="{'reason': true}">
+                          <div class="input-group" *ngIf="transaction.isEdit">
+                            <input type="text" class="form-control" placeholder="{{user.banking[i].reason}}"
+                              #reasonEdited>
+                          </div>
+                          <div *ngIf="!transaction.isEdit">
+                            {{ transaction.reason }}
+                          </div>
+                        </td>
+                        <td [ngClass]="{'date': true}">
+                          <div class="input-group" *ngIf="transaction.isEdit">
+                            <input type="date" class="form-control" placeholder="{{user.banking[i].date}}" #dateEdited>
+                          </div>
+                          <div *ngIf="!transaction.isEdit">
+                            {{ transaction.date | date:'dd/MM/yyyy' }}
+                          </div>
+                        </td>
+                        <td
+                          [ngClass]="{'text-negative': transaction.total < 0, 'text-positive': transaction.total >= 0}">
+                          {{transaction.total}} €</td>
+                        <td>
+
+                          <button id="deleteRowBtn" (click)="deleteBanking(i)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+
+                          <button id="editRowBtn" *ngIf="!transaction.isEdit" (click)="editingBanking(i)">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+
+                          <button id="editRowBtn" *ngIf="transaction.isEdit"
+                            (click)="completeEdit(amountEdited?.value, reasonEdited?.value, dateEdited?.value, transaction, i)">
+                            <mat-icon>check_circle</mat-icon>
+                          </button>
+
+                          <button id="undoEditRowBtn" *ngIf="transaction.isEdit" (click)="undoEditing(i)">
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="d-flex align-items-center flex-column">
+          <form id="addNewRowForm" class="d-flex justify-content-between align-items-center pb-2 pt-4 px-5">
+            <input id="addInputFormAmount" type="number" class="form-control" placeholder="amount" #amountUser>
+            <input id="addInputFormReason" type="text" class="form-control" placeholder="reason" #reasonUser>
+            <input id="addInputFormDate" type="date" class="form-control" #dateUser>
+          </form>
+
+          <button id="addButton" (click)="addBanking(amountUser.value, reasonUser.value, dateUser.value)">
+            <div class="dollar-div d-flex align-items-center align-content-center">
+              <mat-icon> monetization_on </mat-icon>
+            </div>
+          </button>
+          <!--<button class="btn btn-primary" (click)="showUser()">User</button> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

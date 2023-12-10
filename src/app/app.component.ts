@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { ApplicationRef, Component, ViewChild, inject } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  title = 'kontaki';
+  constructor(private update: SwUpdate) { }
+
+  ngOnInit() {
+  }
 }

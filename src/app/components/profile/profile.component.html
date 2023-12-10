@@ -1,0 +1,51 @@
+<div class="container d-flex justify-content-center mt-5 mb-5" *ngIf="authService.userData as user">
+
+  <div class="card">
+
+    <div class="top-container">
+
+      <div class="ml-3">
+        <h6 class="name mb-4">{{(user.displayName) ? user.displayName : 'Profile'}}</h6>
+        <div class="d-flex mx-auto">
+          <mat-icon id="infoIcon"> email </mat-icon>
+          <p class="mail">{{user.email}}</p>
+        </div>
+        <div class="d-flex mx-auto">
+          <mat-icon id="infoIcon"> ballot </mat-icon>
+          <p class="mail"><small>{{user.uid}}</small></p>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div class="middle-container d-flex align-items-center mt-3 p-2">
+      <div class="dollar-div px-3">
+
+        <div class="round-div"><mat-icon> attach_money </mat-icon></div>
+
+      </div>
+      <div class="d-flex flex-column text-right">
+        <span class="current-balance">Current total</span>
+        <span class="amount"><span class="dollar-sign">$</span>{{authService.getLastBankingElem()}}</span>
+      </div>
+    </div>
+
+    <div class="middle-container d-flex align-items-center mt-3 p-2">
+      <div class="dollar-div px-3">
+
+        <div class="round-div"><mat-icon> credit_score </mat-icon></div>
+
+      </div>
+      <div class="d-flex flex-column text-right">
+        <span class="current-balance">Starting total</span>
+        <span class="amount"><span class="dollar-sign">$</span>{{user.startingCash}}</span>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>

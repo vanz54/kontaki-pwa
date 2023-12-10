@@ -1,0 +1,78 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <h1>Kontaki</h1>
+
+    <img cImg height="100" rounded src="assets/images/kontaki.png" />
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="login">
+      <mat-icon>person_pin</mat-icon>
+      <span>Login</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="register">
+      <mat-icon>person_add</mat-icon>
+      <span>Register</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="about">
+      <mat-icon>help</mat-icon>
+      <span>Info</span>
+    </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button id="toggle-button" mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon id="open-menu" *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> </mat-icon>
+    </button>
+    <div class="content mat-elevation-z8 d-flex justify-content-center">
+
+      <div id="homeRight" class="pb-3">
+
+        <div [class.show]="this.authService.errorMessage" class="error-message">
+          <mat-icon>error</mat-icon> {{ this.authService.errorMessage }}
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+<!-- 
+<div id="homeKontaki">
+
+  <div style="background-color: #104e79; width: 40%; height: 100%; float:left; border-right: #3b8df2 10px solid;">
+    <h1>Kontaki</h1>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <img cImg height="150" rounded src="assets/images/kontaki.png" />
+      <div class="p-5 text-white text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint quia
+        rem excepturi,
+        quis
+        facere
+        maxime qui
+        accusamus laboriosam autem repellendus quo! Totam sequi aliquid dolorem pariatur veritatis minima placeat
+        quidem.</div>
+
+
+    </div>
+  </div>
+
+  <div id="homeRight">
+
+    <router-outlet></router-outlet>
+
+    <div class="btn" *ngIf="checkRouteLogin()" routerLink="login">
+      <mat-icon>person_pin</mat-icon>
+    </div>
+    <div class="btn" *ngIf="checkRouteRegister()" routerLink="register">
+      <mat-icon>person_add</mat-icon>
+    </div>
+  </div>
+
+</div> -->
