@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
-  {path:'', pathMatch : 'full' , component: HomeComponent},
+  {path:'home', pathMatch : 'full' , redirectTo: '/home/login'},
   {path:'home', component: HomeComponent, children: [
     {path:'login', component: LoginComponent},
     {path:'register', component: RegisterComponent},

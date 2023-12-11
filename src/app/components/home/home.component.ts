@@ -58,4 +58,8 @@ export class HomeComponent {
       return true;
     }
   }
+
+  checkRouteHome() {
+    return this.router.url === '/home';
+  }
 }

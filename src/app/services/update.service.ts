@@ -18,7 +18,7 @@ export class UpdateService {
            // Allow the app to stabilize first, before starting
           // polling for updates with `interval()`.
           const appIsStable$ = appRef.isStable.pipe(first(isStable => isStable === true));
-          const every10Minutes$ = interval( 10 * 60*1000 );
+          const every10Minutes$ = interval( /* 10 * */60*1000 );
           const every10MinutesOnceAppIsStable$ = concat(appIsStable$, every10Minutes$);
 
           every10MinutesOnceAppIsStable$.subscribe(async () => {

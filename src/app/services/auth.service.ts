@@ -117,7 +117,7 @@ export class AuthService {
           if (user) {
             this.router.navigate(['dashboard/bank']);
             
-            this.notification.spawnNotification((user.displayName? user.displayName : 'User') + ' successfully logged in')
+            this.notification.spawnNotification((user.displayName? user.displayName : 'User') + ' logged in')
           }
         });
       })
@@ -155,7 +155,7 @@ export class AuthService {
           displayName: name
         });
         console.log(result.user);
-        this.notification.spawnNotification((name? name : 'User') + ' successfully registered')
+        this.notification.spawnNotification((name? name : 'User') + ' registered')
         this.router.navigate(['login']);
       })
       .catch((error) => {
@@ -251,7 +251,8 @@ export class AuthService {
       banking: updatedBanking,
       totalCash: updatedBanking.length!=0 ? updatedBanking[updatedBanking.length - 1].total : this.userData.startingCash
     });
-    console.log(this.userData.banking);
+    
+    this.notification.spawnNotification("New transaction of " + importo.amount + "€ added")
   }
 
   removeFromArray(index: number) {
@@ -288,6 +289,8 @@ export class AuthService {
       banking: updatedBanking,
       totalCash: updatedBanking.length!=0 ? updatedBanking[updatedBanking.length - 1].total : this.userData.startingCash
     });
+    
+    this.notification.spawnNotification("Transaction #" + (index + 1) + " deleted")
   }
 
   editBanking(index: number) {
@@ -368,34 +371,3 @@ export class AuthService {
 
 
 
-
-
-/* 
-seVolessiBankingComeDocumento() {
-  //Update banking data considering banking as a document !!!!!
-
-    const updateBankingData = {
-      amount: importo.amount,
-      reason: importo.reason,
-      data: importo.data
-    };
-
-    let idImporto = updateBankingData.data.getTime().toString().concat(updateBankingData.amount.toString());
-
-    
-    Object.keys(importo).forEach(key => {
-      if (typeof importo[key] === 'undefined') {
-        updateBankingData[key] = null;
-      } else {
-        updateBankingData[key] = importo[key];
-      }
-    });
-
-    console.log(updateBankingData);
-    
-    const bankingRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${this.userData.uid}/banking/${idImporto}`
-    );
-
-    bankingRef.set(updateBankingData); 
-} */
