@@ -30,6 +30,13 @@ export class BankComponent {
 
   addBanking(amount: number , reason: string, date: Date) {
     // console.log(new Importo(amount, reason, date))
+    const cleanedAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/, ''));
+
+    if (isNaN(cleanedAmount)) {
+      alert('Inserisci un valore numerico valido per l\'importo.');
+      return;
+    }
+    
     this.authService.addToArray(new Importo(Number(amount), String(reason), date));
   }
 

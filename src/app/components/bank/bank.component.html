@@ -33,7 +33,7 @@
                               #amountEdited>
                           </div>
                           <div *ngIf="!transaction.isEdit">
-                            {{ transaction.amount }} €
+                            {{ transaction.amount.toFixed(2)}} €
                           </div>
                         </td>
                         <td [ngClass]="{'reason': true}">
@@ -55,7 +55,7 @@
                         </td>
                         <td
                           [ngClass]="{'text-negative': transaction.total < 0, 'text-positive': transaction.total >= 0}">
-                          {{transaction.total}} €</td>
+                          {{transaction.total.toFixed(2)}} €</td>
                         <td>
 
                           <button id="deleteRowBtn" (click)="deleteBanking(i)">
@@ -88,7 +88,7 @@
 
         <div class="d-flex align-items-center flex-column">
           <form id="addNewRowForm" class="d-flex justify-content-between align-items-center pb-2 pt-4 px-5">
-            <input id="addInputFormAmount" type="number" class="form-control" placeholder="[+/-]amount" #amountUser>
+            <input id="addInputFormAmount" type="number" class="form-control" placeholder="[ - ]amount" #amountUser>
             <input id="addInputFormReason" type="text" class="form-control" placeholder="reason" #reasonUser>
             <input id="addInputFormDate" type="date" class="form-control" #dateUser>
           </form>
