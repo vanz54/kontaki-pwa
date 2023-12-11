@@ -66,7 +66,7 @@ import { NotificationService } from './services/notification.service';
     MatIconModule,
     MatDividerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: true,
+      enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],

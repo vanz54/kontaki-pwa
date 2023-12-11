@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
   apiKey: "AIzaSyBHkwthDZe8KInu468Jxy2iqVCkbnKBioE",
   authDomain: "kontaki-tv54.firebaseapp.com",
