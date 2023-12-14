@@ -141,6 +141,8 @@ export class AuthService {
           this.errorMessage = 'Email is badly formatted.';
         } else if (error.code === 'auth/missing-password') {
           this.errorMessage = 'Password is required.';
+        } else if (error.code === "auth/network-request-failed") {
+          this.errorMessage = 'Check your internet connection.';
         } else {
           this.errorMessage = 'Error during login.';
         } 
@@ -180,6 +182,8 @@ export class AuthService {
           this.errorMessage = 'Email is badly formatted.';
         } else if (error.code === 'auth/missing-password') {
           this.errorMessage = 'Password is required.';
+        } else if (error.code === "auth/network-request-failed") {
+          this.errorMessage = 'Check your internet connection.';
         } else {
           this.errorMessage = 'Error during registration.';
         }

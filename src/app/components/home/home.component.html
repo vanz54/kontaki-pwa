@@ -31,8 +31,11 @@
     <div class="content mat-elevation-z8 d-flex justify-content-center">
       <div id="homeRight" class="pb-3">
 
-        <div [class.show]="this.authService.errorMessage" class="error-message">
-          <mat-icon>error</mat-icon> {{ this.authService.errorMessage }}
+        <div [class.show]="this.authService.errorMessage" class="error-message"
+          [class.connection-lost]="this.authService.errorMessage === 'Check your internet connection.'">
+          <mat-icon *ngIf="this.authService.errorMessage !== 'Check your internet connection.'">error</mat-icon>
+          <mat-icon *ngIf="this.authService.errorMessage === 'Check your internet connection.'">wifi_off</mat-icon>
+          {{ this.authService.errorMessage }}
         </div>
         <router-outlet></router-outlet>
       </div>
