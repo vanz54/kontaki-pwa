@@ -1,7 +1,7 @@
 
 import { Injectable, NgZone } from '@angular/core';
 import { Importo, User } from '../services/user';
-import { doc, updateDoc, arrayUnion, arrayRemove, Timestamp } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, arrayRemove, Timestamp, initializeFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -10,6 +10,8 @@ import { combineLatest, map } from 'rxjs';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { NotificationService } from './notification.service';
+import { OfflineService } from './offline.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +20,22 @@ export class AuthService {
   userData: any; // Save logged in user data
   errorMessage: any;
 
+  /* Initialize Cloud Firestore whitout angular/fire 
+  private app = firebase.initializeApp(environment.firebase);
+  private db = initializeFirestore(this.app, {
+    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
+  }); */
+
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
-    public notification: NotificationService
+    public notification: NotificationService,
+    public offlineService: OfflineService
   ) {
+    //enableIndexedDbPersistence(this.db)
+
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -208,7 +219,8 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${this.userData.uid}`
     );
-    console.log(this.userData.banking);
+
+    this.offlineService.saveFormData(importo);
 
     let updatedBanking = [];
     
@@ -251,6 +263,8 @@ export class AuthService {
       banking: updatedBanking,
       totalCash: updatedBanking.length!=0 ? updatedBanking[updatedBanking.length - 1].total : this.userData.startingCash
     });
+
+    localStorage.removeItem('offlineInput');
     
     this.notification.spawnNotification("New transaction of " + importo.amount + "€ added")
   }

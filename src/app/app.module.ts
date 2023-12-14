@@ -67,7 +67,7 @@ import { NotificationService } from './services/notification.service';
     MatDividerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      registrationStrategy: 'registerImmediately'
+      registrationStrategy: 'registerWhenStable:1000'
     })
   ],
   providers: [AuthService],
