@@ -1,8 +1,7 @@
-// offline.service.ts
 import { Injectable, NgZone } from '@angular/core';
-import { Importo } from './user';
-import { BehaviorSubject } from 'rxjs';
 
+/* This service allows to check state of connection and allowing 
+the user to update the table with all the transactions */
 @Injectable({
   providedIn: 'root',
 })
@@ -20,10 +19,6 @@ export class OfflineService {
       this.online = false;
       console.log("Offline");
     });
-  }
-
-  getOnlineStatus() {
-    return this.online;
   }
 
   saveFormData(data: any): void {
@@ -47,6 +42,8 @@ export class OfflineService {
     localStorage.removeItem('offlineFormDataArray');
   }
 
+  /*  Remove last item from array of data in localStorage, 
+  useful when page is not reloaded but user is offline and adds an element */
   removeLastItemFromOfflineFormDataArray(): void {
     const offlineData = JSON.parse(localStorage.getItem('offlineFormDataArray') || '[]');
     offlineData.pop();

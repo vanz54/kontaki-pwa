@@ -3,16 +3,17 @@ import { Injectable, NgZone } from '@angular/core';
 import { Importo, User } from '../services/user';
 import { doc, updateDoc, arrayUnion, arrayRemove, Timestamp, initializeFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { combineLatest, map } from 'rxjs';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { NotificationService } from './notification.service';
 import { OfflineService } from './offline.service';
+import * as auth from 'firebase/auth';
+import firebase from 'firebase/compat/app';
 import { environment } from '../environments/environment';
 
+/* This service allows to interact with firebase 
+to authenticate, store, edit and retrieve data, it uses angular fire npm package */
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +21,7 @@ export class AuthService {
   userData: any; // Save logged in user data
   errorMessage: any;
 
-  /* Initialize Cloud Firestore whitout angular/fire 
+  /* If want to initialize Firestore whitout angular/fire 
   private app = firebase.initializeApp(environment.firebase);
   private db = initializeFirestore(this.app, {
     cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
@@ -74,7 +75,6 @@ export class AuthService {
           this.offlineService.clearOfflineFormDataArray();
         }
 
-
         const bankingsJS = bankings.map((obj)=> {return Object.assign({}, obj)});
 
         const totals = snapshot.get("totalCash");
@@ -116,7 +116,9 @@ export class AuthService {
       `users/${user.uid}`
     );
     
-   this.userData = {
+    /*  Name and starting cash not needed on register, 
+    but they have default values on register */
+    this.userData = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -222,6 +224,7 @@ export class AuthService {
     });
   }
 
+  // Returns last element of banking array
   getLastBankingElem () {
     if(this.userData.banking.length == 0)
       return this.userData.totalCash
@@ -229,6 +232,7 @@ export class AuthService {
       return this.userData.banking[this.userData.banking.length - 1].total      
   }
 
+  // Adds transaction to banking array, even if offline and offline+reloading
   addToArray(importo: Importo) {
     
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
@@ -240,7 +244,7 @@ export class AuthService {
       this.offlineService.saveFormData(importo);
     }
 
-
+    // Updates array of transactions with data
     let updatedBanking = [];
     
     if (this.userData.banking.length != 0) {
@@ -285,6 +289,7 @@ export class AuthService {
     updatedBanking.push(lastElemToInsert);
     this.userData.banking = [...updatedBanking];
     
+    // When online, update firebase
     if(this.offlineService.online){
       userRef.update({
         banking: updatedBanking,
@@ -292,11 +297,10 @@ export class AuthService {
       });
     }
 
-    
-    
     this.notification.spawnNotification("New transaction of " + importo.amount + "€ added")
   }
 
+  // Deletes transaction from banking array, available when online
   removeFromArray(index: number) {
     let updatedBanking = [];
 
@@ -335,6 +339,7 @@ export class AuthService {
     this.notification.spawnNotification("Transaction #" + (index + 1) + " deleted")
   }
 
+  // Edits transaction from banking array, available when online
   editBanking(index: number) {
     this.userData.banking[index].isEdit = true;
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
@@ -345,6 +350,7 @@ export class AuthService {
     });
   }
 
+  // Edits transaction from banking array, available when online
   completeEditBanking(amount: number, reason: string, date: string, oldTransaction , index: number) {
     
     let updatedBanking = [];
@@ -398,6 +404,7 @@ export class AuthService {
     });
   }
 
+  // Cancels edit transaction from banking array if the user clicked on edit but changed idea, available when online
   undoEditBanking(index: number) {
     this.userData.banking[index].isEdit = false;
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(

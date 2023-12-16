@@ -2,9 +2,8 @@ import { Injectable, ApplicationRef } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { concat, interval } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
-import { deprecate } from 'util';
 
-
+/* This service allows the service worker to update when there is a new version of the pwa */
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +14,8 @@ export class UpdateService {
     public appRef: ApplicationRef
     ) {
       if (updates.isEnabled) {
-           // Allow the app to stabilize first, before starting
-          // polling for updates with `interval()`.
+          /* Allow the app to stabilize first, before starting
+          polling for updates with `interval()`. */
           const appIsStable$ = appRef.isStable.pipe(first(isStable => isStable === true));
           const every10Minutes$ = interval( /* 10 * */60*1000 );
           const every10MinutesOnceAppIsStable$ = concat(appIsStable$, every10Minutes$);
