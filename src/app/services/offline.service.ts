@@ -46,4 +46,10 @@ export class OfflineService {
   clearOfflineFormDataArray(): void {
     localStorage.removeItem('offlineFormDataArray');
   }
+
+  removeLastItemFromOfflineFormDataArray(): void {
+    const offlineData = JSON.parse(localStorage.getItem('offlineFormDataArray') || '[]');
+    offlineData.pop();
+    localStorage.setItem('offlineFormDataArray', JSON.stringify(offlineData));
+  }
 }
