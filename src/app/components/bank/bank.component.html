@@ -33,7 +33,7 @@
                               #amountEdited>
                           </div>
                           <div *ngIf="!transaction.isEdit">
-                            {{ transaction.amount.toFixed(2)}} €
+                            {{ transaction.amount}} €
                           </div>
                         </td>
                         <td [ngClass]="{'reason': true}">
@@ -55,7 +55,7 @@
                         </td>
                         <td
                           [ngClass]="{'text-negative': transaction.total < 0, 'text-positive': transaction.total >= 0}">
-                          {{transaction.total.toFixed(2)}} €</td>
+                          {{transaction.total}} €</td>
                         <td>
 
                           <button id="deleteRowBtn" (click)="deleteBanking(i)">

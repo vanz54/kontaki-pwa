@@ -34,7 +34,7 @@ export class OfflineService {
   }
 
   saveFormData(data: Importo): void {
-    if (!this.online) {
+    if (!this.online.value) {
       // Get array of data from localStorage
       const offlineData = JSON.parse(localStorage.getItem('offlineFormDataArray') || '[]');
 
