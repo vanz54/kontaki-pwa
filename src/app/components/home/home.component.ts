@@ -17,9 +17,9 @@ export class HomeComponent {
   sidenav!: MatSidenav;
   
   ngOnInit() {
-    this.checkRouteLogin();
   }
 
+  // This is used to change the sidenav mode from over to side and vice versa
   ngAfterViewInit() {
     this.observer
       .observe(['(max-width: 800px)'])
@@ -34,6 +34,7 @@ export class HomeComponent {
         }
       });
 
+    // This is used to close the sidenav when the route changes
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd)
       )
@@ -43,23 +44,5 @@ export class HomeComponent {
         }
       });
   }
-  checkRouteLogin() {
-    if (this.router.url == '/home/login') {
-      return false; //mostra register
-    } else {
-      return true;
-    }
-  }
 
-  checkRouteRegister() {
-    if (this.router.url == '/home/register'  || this.router.url == '/home') {
-      return false; //mostra login
-    } else {
-      return true;
-    }
-  }
-
-  checkRouteHome() {
-    return this.router.url === '/home';
-  }
 }

@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 
+// Redirecttions and use of guard to protect the dashboard
 const routes: Routes = [
   {
     path: 'home',

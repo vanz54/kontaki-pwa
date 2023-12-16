@@ -1,6 +1,7 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// modules and angular-fire
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -11,7 +12,7 @@ import { environment } from './environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-// material
+// materials
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -32,7 +33,7 @@ import { HomeComponent } from './components/home/home.component';
 // routing
 import { AppRoutingModule } from './app-routing.module';
 
-// service
+// services
 import { AuthService } from './services/auth.service';
 import { NotificationService } from './services/notification.service';
 

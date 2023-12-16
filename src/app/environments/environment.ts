@@ -1,3 +1,4 @@
+// Environment variables, firebase config of the project
 export const environment = {
   production: true,
   firebase: {
@@ -11,4 +12,4 @@ export const environment = {
   }
 };
 
-//usato in app.module.ts
+// Used in app.module.ts
