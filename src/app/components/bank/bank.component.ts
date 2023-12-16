@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/f
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { OfflineService } from 'src/app/services/offline.service';
 import { Importo } from 'src/app/services/user';
 
 @Component({
@@ -19,7 +20,11 @@ export class BankComponent {
   @ViewChild('dateEdited') dateEdited: ElementRef;
 
 
-  constructor(public authService: AuthService) { }
+  constructor(
+    public authService: AuthService,
+    public offlineService: OfflineService
+  ) { }
+
   ngOnInit(): void {}
 
 
@@ -59,6 +64,13 @@ export class BankComponent {
     // console.log(transaction);
     this.authService.undoEditBanking(index);
   }
+
+  toFixedTwo(value?: number): number | undefined {
+    if (value === undefined) {
+      return 0;
+    }
   
+    return Number(value.toFixed(2));
+  }
 }
 

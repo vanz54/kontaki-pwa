@@ -7,25 +7,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class OfflineService {
-  private online: BehaviorSubject<boolean>;
+  online: boolean = navigator.onLine;
 
-  get connectionChanged() {
-    return this.online.asObservable();
-  }
 
-  constructor(private ngZone: NgZone) {
-    this.online = new BehaviorSubject<boolean>(navigator.onLine);
-
+  constructor() {
+    //Subscribes to check for navigation status
     window.addEventListener('online', () => {
-      this.ngZone.run(() => {
-        this.online.next(true);
-      });
+      this.online = true;
+      console.log("Online");
     });
-
     window.addEventListener('offline', () => {
-      this.ngZone.run(() => {
-        this.online.next(false);
-      });
+      this.online = false;
+      console.log("Offline");
     });
   }
 
@@ -34,7 +27,7 @@ export class OfflineService {
   }
 
   saveFormData(data: Importo): void {
-    if (!this.online.value) {
+    if (!this.online) {
       // Get array of data from localStorage
       const offlineData = JSON.parse(localStorage.getItem('offlineFormDataArray') || '[]');
 

@@ -33,7 +33,7 @@
                               #amountEdited>
                           </div>
                           <div *ngIf="!transaction.isEdit">
-                            {{ transaction.amount}} €
+                            {{toFixedTwo(transaction.amount)}} €
                           </div>
                         </td>
                         <td [ngClass]="{'reason': true}">
@@ -55,23 +55,25 @@
                         </td>
                         <td
                           [ngClass]="{'text-negative': transaction.total < 0, 'text-positive': transaction.total >= 0}">
-                          {{transaction.total}} €</td>
+                          {{toFixedTwo(transaction.total)}} €</td>
                         <td>
 
-                          <button id="deleteRowBtn" (click)="deleteBanking(i)">
+                          <button id="deleteRowBtn" [disabled]="!this.offlineService.online" (click)="deleteBanking(i)">
                             <mat-icon>delete</mat-icon>
                           </button>
 
-                          <button id="editRowBtn" *ngIf="!transaction.isEdit" (click)="editingBanking(i)">
+                          <button id="editRowBtn" *ngIf="!transaction.isEdit" [disabled]="!this.offlineService.online"
+                            (click)="editingBanking(i)">
                             <mat-icon>edit</mat-icon>
                           </button>
 
-                          <button id="editRowBtn" *ngIf="transaction.isEdit"
+                          <button id="editRowBtn" *ngIf="transaction.isEdit" [disabled]="!this.offlineService.online"
                             (click)="completeEdit(amountEdited?.value, reasonEdited?.value, dateEdited?.value, transaction, i)">
                             <mat-icon>check_circle</mat-icon>
                           </button>
 
-                          <button id="undoEditRowBtn" *ngIf="transaction.isEdit" (click)="undoEditing(i)">
+                          <button id="undoEditRowBtn" *ngIf="transaction.isEdit"
+                            [disabled]="!this.offlineService.online" (click)="undoEditing(i)">
                             <mat-icon>cancel</mat-icon>
                           </button>
 

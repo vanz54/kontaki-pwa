@@ -28,6 +28,18 @@ td {
   border: none;
 }
 
+#deleteRowBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #526876 !important;
+}
+
+#editRowBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #526876 !important;
+}
+
 #deleteRowBtn:hover {
   color: #9f1d1d;
 }

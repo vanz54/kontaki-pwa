@@ -19,7 +19,6 @@ import { environment } from '../environments/environment';
 export class AuthService {
   userData: any; // Save logged in user data
   errorMessage: any;
-  online: boolean = navigator.onLine;
 
   /* Initialize Cloud Firestore whitout angular/fire 
   private app = firebase.initializeApp(environment.firebase);
@@ -36,16 +35,7 @@ export class AuthService {
     public offlineService: OfflineService
   ) {
     //enableIndexedDbPersistence(this.db)
-    
-    //Suubscribe to navigator online/offline event
-    window.addEventListener('online', () => {
-      this.online = true;
-      console.log("Online");
-    });
-    window.addEventListener('offline', () => {
-      this.online = false;
-      console.log("Offline");
-    });
+
 
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -76,7 +66,7 @@ export class AuthService {
       if (snapshot.exists) {
         const bankings = snapshot.get("banking");
 
-        if (this.online) {
+        if (this.offlineService.online) {
           this.offlineService.getOfflineFormDataArray().forEach((importo) => {
             bankings.push(importo)
           });
@@ -85,7 +75,7 @@ export class AuthService {
 
 
         const bankingsJS = bankings.map((obj)=> {return Object.assign({}, obj)});
-        
+
         const totals = snapshot.get("totalCash");
         const starts = snapshot.get("startingCash");
 
@@ -244,7 +234,7 @@ export class AuthService {
       `users/${this.userData.uid}`
     );
 
-    if (!this.online)
+    if (!this.offlineService.online)
     this.offlineService.saveFormData(importo);
 
     let updatedBanking = [];
