@@ -235,10 +235,6 @@ export class AuthService {
       `users/${this.userData.uid}`
     );
 
-    // Adds transaction to offline array if offline, when online and logged in it will be added to the database
-    if (!this.offlineService.online){
-      this.offlineService.saveFormData(importo);
-    }
 
     let updatedBanking = [];
     
@@ -273,6 +269,11 @@ export class AuthService {
       total: importo.amount + previousTotal,
       isEdit: false
     };
+
+    // Adds transaction to offline array if offline, when online and logged in it will be added to the database
+    if (!this.offlineService.online){
+      this.offlineService.saveFormData(lastElemToInsert);
+    }
 
     updatedBanking.push(lastElemToInsert);
     this.userData.banking = [...updatedBanking];

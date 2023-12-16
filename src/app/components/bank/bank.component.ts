@@ -23,8 +23,8 @@ export class BankComponent {
   constructor(
     public authService: AuthService,
     public offlineService: OfflineService
-  ) { }
-
+    ) { }
+    
   ngOnInit(): void {}
 
 
