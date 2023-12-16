@@ -66,6 +66,7 @@ export class AuthService {
       if (snapshot.exists) {
         const bankings = snapshot.get("banking");
 
+        // Updates array of transactions with offline data
         if (this.offlineService.online) {
           this.offlineService.getOfflineFormDataArray().forEach((importo) => {
             bankings.push(importo)
@@ -234,8 +235,10 @@ export class AuthService {
       `users/${this.userData.uid}`
     );
 
-    if (!this.offlineService.online)
-    this.offlineService.saveFormData(importo);
+    // Adds transaction to offline array if offline, when online and logged in it will be added to the database
+    if (!this.offlineService.online){
+      this.offlineService.saveFormData(importo);
+    }
 
     let updatedBanking = [];
     
@@ -273,13 +276,15 @@ export class AuthService {
 
     updatedBanking.push(lastElemToInsert);
     this.userData.banking = [...updatedBanking];
+    
+    if(this.offlineService.online){
+      userRef.update({
+        banking: updatedBanking,
+        totalCash: updatedBanking.length!=0 ? updatedBanking[updatedBanking.length - 1].total : this.userData.startingCash
+      });
+    }
 
-    userRef.update({
-      banking: updatedBanking,
-      totalCash: updatedBanking.length!=0 ? updatedBanking[updatedBanking.length - 1].total : this.userData.startingCash
-    });
-
-    localStorage.removeItem('offlineInput');
+    
     
     this.notification.spawnNotification("New transaction of " + importo.amount + "€ added")
   }
