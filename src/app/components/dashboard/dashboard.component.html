@@ -7,8 +7,7 @@
       <mat-list-item role="listitem" routerLink="profile" routerLinkActive="active-list-item">
         <mat-icon class="center-flex">person</mat-icon>
       </mat-list-item>
-      <mat-list-item *ngIf="isCurrentRouteProfile('profile')" id="logout-icon" role="listitem"
-        (click)="authService.SignOut()">
+      <mat-list-item *ngIf="isCurrentRoute('profile')" id="logout-icon" role="listitem" (click)="authService.SignOut()">
         <mat-icon class="center-flex">exit_to_app</mat-icon>
       </mat-list-item>
     </mat-list>

@@ -13,7 +13,8 @@ constructor(public authService: AuthService, private router: Router) { }
 
 ngOnInit() {}
 
-isCurrentRouteProfile(route: string): boolean {
+// This function is used to redirect to the link provided in the parameter
+isCurrentRoute(route: string): boolean {
   return this.router.url.includes(route);
 }
 

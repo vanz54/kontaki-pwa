@@ -346,7 +346,6 @@ export class AuthService {
   }
 
   completeEditBanking(amount: number, reason: string, date: string, oldTransaction , index: number) {
-    console.log("Vecchi valori:", oldTransaction.amount, oldTransaction.reason, oldTransaction.date, oldTransaction.total);
     
     let updatedBanking = [];
 

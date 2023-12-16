@@ -13,8 +13,7 @@ import { Importo } from 'src/app/services/user';
 })
 export class BankComponent {
 
-  bankingRef: AngularFirestoreCollection<any>;
-  imports: Observable<any>;
+  // Viewchild is used to get the value of the input fields when editing
   @ViewChild('amountEdited') amountEdited: ElementRef;
   @ViewChild('reasonEdited') reasonEdited: ElementRef;
   @ViewChild('dateEdited') dateEdited: ElementRef;
@@ -27,28 +26,22 @@ export class BankComponent {
     
   ngOnInit(): void {}
 
-
-  toFirebaseDate(timestamp) {
-    var myDate = new Date(timestamp);
-    return myDate;
-  }
-
+  // Add a new banking transaction
   addBanking(amount: number , reason: string, date: Date) {
-    // console.log(new Importo(amount, reason, date))
     this.authService.addToArray(new Importo(Number(amount), String(reason), date));
   }
 
+  // Delete a banking transaction
   deleteBanking(index) {
-    // console.log(index);
-    // console.log(transaction);
     this.authService.removeFromArray(index);
   }
 
+  // Edit a banking transaction
   editingBanking(index) {
-    // console.log(transaction);
     this.authService.editBanking(index);
   }
 
+  // Complete the editing of a banking transaction
   completeEdit(amount: number, reason: string, date: string, transaction: any, index: number) {
     let defaultAmount = transaction.amount;
     let defaultReason = transaction.reason;
@@ -60,11 +53,12 @@ export class BankComponent {
     this.authService.completeEditBanking(amount, reason, date, oldTransaction, index);
   }
 
+  // Undo the editing of a banking transaction
   undoEditing(index) {
-    // console.log(transaction);
     this.authService.undoEditBanking(index);
   }
 
+  // Allows to fix the decimals to prevent showing too many decimals
   toFixedTwo(value?: number): number | undefined {
     if (value === undefined) {
       return 0;
