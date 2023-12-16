@@ -11,6 +11,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from './environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import 'chart.js';
+import { NgApexchartsModule } from "ng-apexcharts"
 
 // materials
 import { MatInputModule } from '@angular/material/input';
@@ -36,6 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
 // services
 import { AuthService } from './services/auth.service';
 import { NotificationService } from './services/notification.service';
+import { GraphComponent } from './components/graph/graph.component';
 
 
 @NgModule({
@@ -48,6 +51,7 @@ import { NotificationService } from './services/notification.service';
     ProfileComponent,
     AboutComponent,
     HomeComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { NotificationService } from './services/notification.service';
     AngularFireDatabaseModule,
     AppRoutingModule,
     MatInputModule,
+    NgApexchartsModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,

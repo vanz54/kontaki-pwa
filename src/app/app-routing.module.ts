@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
+// Components used in the routing
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -9,6 +10,7 @@ import { BankComponent } from './components/bank/bank.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 // Redirecttions and use of guard to protect the dashboard
 const routes: Routes = [
@@ -28,6 +30,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'bank', component: BankComponent },
+      { path: 'graph', component: GraphComponent},
       { path: 'profile', component: ProfileComponent }
     ]
   },

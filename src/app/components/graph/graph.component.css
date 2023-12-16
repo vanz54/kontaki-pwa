@@ -1,0 +1,45 @@
+#chart-container {
+  background: #0e5889;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 48px !important;
+  margin-bottom: 48px !important;
+  width: 90%;
+  margin: auto;
+  height: 100%;
+  overflow-y: auto;
+}
+
+#chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100%; /* Imposta un'altezza massima se necessario */
+}
+
+#chart-container.scrollable-chart {
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Stili per le etichette sull'asse Y */
+#chart-container .axis-y-labels {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Stili per le etichette sull'asse X */
+#chart-container .axis-x-labels {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Stili per il titolo del grafico */
+#chart-container .chart-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
