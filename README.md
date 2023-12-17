@@ -41,5 +41,6 @@ Run `ng serve` for a dev server, with new versions of Angular a dev server can a
 
 # Tommaso Vanz
 [Github](https://github.com/vanz54)
+
 [Linkedin](https://www.linkedin.com/in/tommasovanz/)
 
