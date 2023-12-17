@@ -24,17 +24,20 @@ Accompanying the table is an interactive graph offering a visual representation 
 Furthermore, users have the option to add transactions to the table even in offline mode: after logging in, transactions entered using the button will be locally stored, and once an internet connection is reestablished, they will be automatically updated in the main table and after that can they be edited or removed. This feature allows users to add their transactions flexibly, enabling them to record operations even in situations with limited connectivity and synchronize the data later when online.
 
 ## Features
-- Login / Sign-up / Logout with Firebase
+- Login, Sign-up and Logout with Firebase
 - Data management with Firestore
 - Users management with Fireauth
 - Installable
 - Notifications
-- Offline-mode
+- Offline mode
 - Responsiveness (Mobile and Desktop)
 
 # How to use it
 ## Build
-Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/kontaki ` to use it, this will start up an http-server, serving the build artifacts stored in the `dist/`. I
+Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/kontaki ` to use it, this will start up an http-server, serving the build artifacts stored in the `dist/`.
 
 ## Development server
 Run `ng serve` for a dev server, with new versions of Angular a dev server can also use the service worker and after a initial spam-reload then the application can be tested and fastly updated when improving code. Navigate to `http://localhost:4200/` where the application will automatically reload if you change any of the source files.
+
+# Author - Tommaso Vanz
+
