@@ -11,9 +11,9 @@ import { Chart, registerables } from 'chart.js/auto';
 export class GraphComponent implements OnInit, OnDestroy {
   authStateSubscription: Subscription;
   userGraph: any = {};  // Initialize userGraph as an empty object
-  myChart: Chart; // Variabile per mantenere il riferimento al grafico
+  myChart: Chart; // Variable to hold a reference to the chart
 
-  @ViewChild('myCanvas') myCanvas: ElementRef; // Riferimento all'elemento canvas nel template
+  @ViewChild('myCanvas') myCanvas: ElementRef; // Reference to the canvas element
 
   constructor(private authService: AuthService) { }
 
@@ -21,6 +21,7 @@ export class GraphComponent implements OnInit, OnDestroy {
     if (this.authService.afAuth && this.authService.afAuth.authState) {
       this.authStateSubscription = this.authService.afAuth.authState.subscribe((user) => {
         if (user) {
+          // Get the user data from the database
           this.userGraph = { ...this.authService.userData };
           this.initChart();
         }
@@ -38,6 +39,7 @@ export class GraphComponent implements OnInit, OnDestroy {
     if (this.userGraph && this.userGraph.banking) {
       const sumByDate = {};
       this.userGraph.banking.forEach(transaction => {
+        // Sums the amount for each date
         const date = transaction.date;
         if (!sumByDate[date]) {
           sumByDate[date] = 0;
@@ -49,12 +51,12 @@ export class GraphComponent implements OnInit, OnDestroy {
       const amounts = Object.values(sumByDate);
       const colors = amounts.map(amount => (Number(amount) >= 0) ? '#1ea44a' : '#da2121');
 
-      // Ottieni il riferimento all'elemento canvas nel template
+      // Obtain a reference to the canvas element
       const ctx: CanvasRenderingContext2D = this.myCanvas.nativeElement.getContext('2d');
 
       Chart.defaults.color = '#fff';
 
-      // Crea il grafico Chart.js
+      // Create the chart with Chart.js
       this.myChart = new Chart<"bar", (number | [number, number] )[], string>(ctx, {
         type: 'bar',
         data: {

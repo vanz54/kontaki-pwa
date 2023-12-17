@@ -14,7 +14,7 @@
 #chart-container canvas {
   width: 100% !important;
   height: 100% !important;
-  max-height: 100%; /* Imposta un'altezza massima se necessario */
+  max-height: 100%;
 }
 
 #chart-container.scrollable-chart {
@@ -23,21 +23,18 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-/* Stili per le etichette sull'asse Y */
 #chart-container .axis-y-labels {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
 }
 
-/* Stili per le etichette sull'asse X */
 #chart-container .axis-x-labels {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
 }
 
-/* Stili per il titolo del grafico */
 #chart-container .chart-title {
   color: #fff;
   font-size: 18px;
