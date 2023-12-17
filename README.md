@@ -21,7 +21,7 @@ To interact with the table, users are required to input a positive numeric value
 
 Accompanying the table is an interactive graph offering a visual representation of the user's financial situation, it can be visualized after the table successfully loaded. Additionally, users can find a summary of their profile properties, creating a centralized space for a view of their financial total amount and starting amount.
 
-Furthermore, users have the option to add transactions to the table even in offline mode. After logging in, transactions entered using the button will be locally stored, and once an internet connection is reestablished, they will be automatically updated in the main table and after that can be edited or removed. This feature allows users to add their transactions flexibly, enabling them to record operations even in situations with limited connectivity and synchronize the data later when online.
+Furthermore, users have the option to add transactions to the table even in offline mode: after logging in, transactions entered using the button will be locally stored, and once an internet connection is reestablished, they will be automatically updated in the main table and after that can they be edited or removed. This feature allows users to add their transactions flexibly, enabling them to record operations even in situations with limited connectivity and synchronize the data later when online.
 
 ## Features
 - Login / Sign-up / Logout with Firebase
