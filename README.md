@@ -4,7 +4,7 @@ Kontaki is my first project of a progressive web application in Angular. Is my f
 
 The idea of making this application was born because to keep track of income and expenses in my bank account, I have always used an Excel spreadsheet, so I decided to upgrade and facilitate this monitoring by combining the possibility of studying for an interesting exam and the actual use of the app I would have made.
 
-For the front-end side I used [Angular](https://angular.io/docs) and [Firebase](https://firebase.google.com/) for a simple back-end. I also used some libraries and packages to develop my pwa:
+For the front-end side I used [Angular](https://angular.io/docs) and on the back-end side [Firebase](https://firebase.google.com/). I also used some libraries and packages to develop my pwa:
 - [npm Angular/Fire](https://www.npmjs.com/package/@angular/fire) : package to smooth the developement and comunication between Angular with FireAuth and FireStore;
 - [Bootstrap](https://getbootstrap.com/) : a front-end toolkit to improve and enhance standard CSS;
 - [Angular-material](https://material.angular.io/) : components to customize and improve Angular components;
