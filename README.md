@@ -39,5 +39,7 @@ Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/konta
 ## Development server
 Run `ng serve` for a dev server, with new versions of Angular a dev server can also use the service worker and after a initial spam-reload then the application can be tested and fastly updated when improving code. Navigate to `http://localhost:4200/` where the application will automatically reload if you change any of the source files.
 
-# Author - Tommaso Vanz
+# Tommaso Vanz
+[Github](https://github.com/vanz54)
+[Linkedin](https://www.linkedin.com/in/tommasovanz/)
 
