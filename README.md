@@ -5,13 +5,13 @@ Kontaki is my first project of a progressive web application in Angular. Is my f
 The idea of making this application was born because to keep track of income and expenses in my bank account, I have always used an Excel spreadsheet, so I decided to upgrade and facilitate this monitoring by combining the possibility of studying for an interesting exam and the actual use of the app I would have made.
 
 For the front-end side I used [Angular](https://angular.io/docs) and [Firebase](https://firebase.google.com/) for a simple back-end. I also used some libraries and packages to develop my pwa:
-- [npm Angular/Fire](https://www.npmjs.com/package/@angular/fire) : to smooth the developement and comunication between Angular with FireAuth and FireStore;
-- [Bootstrap](https://getbootstrap.com/) : as a front-end toolkit to improve and enhance standard CSS;
-- [Angular-material](https://material.angular.io/) : to customize and improve Angular components;
-- [Chart.js](https://www.chartjs.org/) : to realize chart in order to monitor from a general point of view the bank account;
+- [npm Angular/Fire](https://www.npmjs.com/package/@angular/fire) : package to smooth the developement and comunication between Angular with FireAuth and FireStore;
+- [Bootstrap](https://getbootstrap.com/) : a front-end toolkit to improve and enhance standard CSS;
+- [Angular-material](https://material.angular.io/) : components to customize and improve Angular components;
+- [Chart.js](https://www.chartjs.org/) : library to realize charts in order to monitor from a general point of view the bank account;
 - [Notifications](https://developer.mozilla.org/en-US/docs/Web/API/Notification) and [Service Worker](https://angular.io/guide/service-worker-getting-started): these services ensure that the app is indeed a pwa, enabling its installability and allowing the user to receive notifications for login, registration, and the addition or removal of a transaction in the table.
 
-## How it works
+# How it works
 When the application is launched, users are greeted with the homepage, offering options to sign in, sign up, or explore general information about the pwa and its developer.
 
 To register, users are prompted to enter a valid email and password. Additionally, they can personalize their profile by choosing a nickname and setting the initial budget for their account. Upon successful registration, users can log in, provided they have a stable internet connection and enter correct credentials.
@@ -32,10 +32,9 @@ Furthermore, users have the option to add transactions to the table even in offl
 - Offline-mode
 - Responsiveness (Mobile and Desktop)
 
+# How to use it
 ## Build
-
-Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/kontaki ` to use it, this will start up an http-server, serving the build artifacts stored in the `dist/`.
+Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/kontaki ` to use it, this will start up an http-server, serving the build artifacts stored in the `dist/`. I
 
 ## Development server
-
-Run `ng serve` for a dev server, with new versions of Angular a dev server can also use the service worker and after a initial spam-reload situation then the application can be tested. Navigate to `http://localhost:4200/` where the application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server, with new versions of Angular a dev server can also use the service worker and after a initial spam-reload then the application can be tested and fastly updated when improving code. Navigate to `http://localhost:4200/` where the application will automatically reload if you change any of the source files.
