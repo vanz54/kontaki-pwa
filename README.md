@@ -33,7 +33,7 @@ Furthermore, users have the option to add transactions to the table even in offl
 - Responsiveness (Mobile and Desktop)
 
 # How to use it
-To use Kontaki, first download the project's .zip folder and open it with Visual Studio Code. Next, install the required packages for the project to function by running `npm install`. Once this is done, you are ready to use the pwa.
+To use Kontaki, since it is not yet deployed online, first download the project's .zip folder and open it with Visual Studio Code. Next, install the required packages for the project to function by running `npm install`. Once this is done, you must edit the `environment.ts` variable `firebase` with your personal Firebase's project configs; Finally, you are ready to use the pwa.
 
 ## Build
 Run `ng build` to build the project and `npx http-server -p 8080 -c-1 dist/kontaki ` to use it, this will start up an http-server, serving the build artifacts stored in the `dist/`.
